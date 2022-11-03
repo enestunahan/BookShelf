@@ -1,7 +1,6 @@
 ﻿using BookShelf.Core.Models;
-using BookShelf.Repository.Configurations;
-using BookShelf.Repository.Seeds;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection;
 
 namespace BookShelf.Repository.DbContexts
 {
@@ -19,17 +18,7 @@ namespace BookShelf.Repository.DbContexts
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            builder.ApplyConfiguration(new AuthorConfiguration());
-            builder.ApplyConfiguration(new BookCategoryConfiguration());
-            builder.ApplyConfiguration(new BookConfiguration());
-            builder.ApplyConfiguration(new BookDetailConfiguration());
-            builder.ApplyConfiguration(new CategoryConfiguration());
-
-            builder.ApplyConfiguration(new AuthorSeed());
-            builder.ApplyConfiguration(new BookCategorySeed());
-            builder.ApplyConfiguration(new BookDetailSeed());
-            builder.ApplyConfiguration(new BookSeed());
-            builder.ApplyConfiguration(new CategorySeed());
+           builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
         }
     }
 }
