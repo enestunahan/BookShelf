@@ -5,8 +5,8 @@ namespace BookShelf.Core.Repositories
 {
     public interface IGenericRepository<TEntity,TKey> where TEntity : class,  IEntity
     {
-        Task<IQueryable<TEntity>> GetAllAsync(bool trackChanges);
-        Task<IQueryable<TEntity>> GetAllByCondition(Expression<Func<TEntity, bool>> expression , bool trackChanges);
+        IQueryable<TEntity> GetAllAsync(bool trackChanges);
+        IQueryable<TEntity>  GetAllByCondition(Expression<Func<TEntity, bool>> expression , bool trackChanges);
         Task<TEntity> GetByIdAsync(TKey id);
         Task AddAsync(TEntity entity);
         Task AddRangeAsync(IEnumerable<TEntity> entities);

@@ -25,16 +25,16 @@ namespace BookShelf.Repository.Repositories
             await _dbSet.AddRangeAsync(entities);
         }
 
-        public async Task<IQueryable<TEntity>> GetAllAsync(bool trackChanges)
+        public IQueryable<TEntity> GetAllAsync(bool trackChanges)
         {
-            return trackChanges ? await _dbSet.AsQueryable() : await _dbSet.AsQueryable().AsNoTrackingAsync();     
+            return trackChanges ?  _dbSet.AsQueryable() :  _dbSet.AsQueryable().AsNoTracking();     
         }
 
-        public async Task<IQueryable<TEntity>> GetAllByCondition(Expression<Func<TEntity, bool>> expression, bool trackChanges)
+        public IQueryable<TEntity> GetAllByCondition(Expression<Func<TEntity, bool>> expression, bool trackChanges)
         {
             return trackChanges
-                ? await _dbSet.Where(expression).AsQueryable()
-                : await _dbSet.Where(expression).AsQueryable().AsNoTracking();
+                ?  _dbSet.Where(expression).AsQueryable()
+                :  _dbSet.Where(expression).AsQueryable().AsNoTracking();
         }
 
         public async Task<TEntity> GetByIdAsync(TKey id)
