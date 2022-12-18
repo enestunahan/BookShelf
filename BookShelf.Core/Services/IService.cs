@@ -1,17 +1,17 @@
-﻿using BookShelf.Core.Abstract;
-using System.Linq.Expressions;
+﻿using System.Linq.Expressions;
 
 namespace BookShelf.Core.Services
 {
-    public interface IService<TDto , TKey> where TDto : class, IDto , new()
+    public interface IService<TEntity , TKey> where TEntity : class, new()
     {
-        Task<IEnumerable<TDto>> GetAllAsync(bool trackChanges);
-        Task<IEnumerable<TDto>> GetAllByCondition(Expression<Func<TDto, bool>> expression, bool trackChanges);
-        Task<TDto> GetByIdAsync(TKey id);
-        Task UpdateAsync(TDto dto);
-        Task<TDto> AddAsync(TDto dto);
-        Task<IEnumerable<TDto>> AddRangeAsync(IEnumerable<TDto> dtos);
-        Task RemoveAsync(TDto dto);
-        Task RemoveRangeAsync(IEnumerable<TDto> dtos);
+
+        Task<IEnumerable<TEntity>> GetAllAsync(bool trackChanges);
+        Task<IEnumerable<TEntity>> GetAllByCondition(Expression<Func<TEntity, bool>> expression, bool trackChanges);
+        Task<TEntity> GetByIdAsync(TKey id);
+        Task UpdateAsync(TEntity entity);
+        Task<TEntity> AddAsync(TEntity entity);
+        Task<IEnumerable<TEntity>> AddRangeAsync(IEnumerable<TEntity> entities);
+        Task RemoveAsync(TEntity entity);
+        Task RemoveRangeAsync(IEnumerable<TEntity> entities);
     }
 }
