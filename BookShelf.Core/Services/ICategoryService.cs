@@ -1,8 +1,8 @@
-﻿using BookShelf.Core.DTOs;
+﻿using BookShelf.Core.Models;
 
 namespace BookShelf.Core.Services
 {
-    public interface ICategoryService : IService<CategoryDto,short>
+    public interface ICategoryService : IService<Category,short>
     {
     }
 }

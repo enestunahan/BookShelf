@@ -1,8 +1,8 @@
-﻿using BookShelf.Core.DTOs;
+﻿using BookShelf.Core.Models;
 
 namespace BookShelf.Core.Services
 {
-    public interface IBookDetailService : IService<BookDetailDto,Guid>
+    public interface IBookDetailService : IService<BookDetail,Guid>
     {
     }
 }
